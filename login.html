@@ -1,0 +1,97 @@
+
+<!-- login.html -->
+<!-- 2003/7/12 -->
+<!-- by liangyongqi -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录——Demo</title>
+    <!-- 引入Element UI的CSS文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.15.0/lib/theme-chalk/index.css">
+    <!-- 引入Element UI的JavaScript文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.15.0/lib/index.js"></script>
+
+    <style>
+            el-container{
+                display: flex;
+            }
+            body{
+                margin: 0;
+            }
+            .imgbox{
+                padding: 0;
+                width: 60%;
+                height: 100%;
+            }
+            .main{
+                display: flex;
+                justify-content: center; /* 水平居中 */
+                align-items: center; /* 垂直居中 */
+                height: 100vh; /* 父div高度为视口的100% */
+                width: 40%;
+                height: 600px;
+            }
+            .loginbar{
+                width: 80%;
+            }
+            
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <div class="imgbox">
+                <img src="./images/cool.jpg" style="max-width: 100%; max-height: 100%; bottom: 0px;">
+            </div>
+            <div class="main">
+                <div class="loginbar">
+                    <el-tabs @tab-click="handleClick" value="userlogin">
+                        <el-tab-pane label="用户管理" name="userlogin">
+                            <h1>用户登录</h1>
+                            <el-input v-model="userid" placeholder="用户名/手机号/学号/邮箱"></el-input>
+                            <br/><br/>
+                            <el-input v-model="password" placeholder="密码"></el-input>
+                            <br/><br/>
+                            <el-button :disabled="!isChecked" round style="width: 100%;">登录</el-button>
+                            <br/><br/>
+                            <el-checkbox v-model="isChecked" label="我已阅读并同意此">我已阅读并同意此<a href=./simpledoc.pdf>用户条款</a></el-checkbox>
+                            <p>没有账号？<a href="./sign.html">注册</a></p>
+                        </el-tab-pane>
+                        <el-tab-pane label="配置管理" name="adminlogin">
+                            <h1>系统管理员</h1>
+                            <el-input v-model="adminid" placeholder="管理员账号" :disabled="true"></el-input>
+                            <br/><br/>
+                            <el-input v-model="password" placeholder="密码"></el-input>
+                            <br/><br/>
+                            <el-button :disabled="!isChecked" round style="width: 100%;" disabled>登录</el-button>
+                        </el-tab-pane>
+                    </el-tabs>
+                </div>
+            </div>
+        </el-container>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                user: '',
+                adminid: 'admin',
+                password:'',
+                isChecked: false
+                };
+            },
+            methods: {
+                handleClick(tab, event) {
+                console.log(tab, event);
+                }
+            }
+        });
+        console.log("2003/7/12 by liangyongqi")
+      </script>
+</body>
+</html>

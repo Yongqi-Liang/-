@@ -1,0 +1,81 @@
+<!-- sign.html -->
+<!-- 2003/7/12 -->
+<!-- byliangyongqi -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册——Demo</title>
+        <!-- 引入Element UI的CSS文件 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.15.0/lib/theme-chalk/index.css">
+        <!-- 引入Element UI的JavaScript文件 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/element-ui@2.15.0/lib/index.js"></script>
+        <style>
+            #app{
+                width: 100%;
+                height: 100%;
+            }
+            body {
+                margin: 0;
+            }
+            .infor{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 80vh;
+            }
+        </style>
+</head>
+<body>
+    <div id="app">
+        <h1 style="text-align: center;">用户注册</h1>
+        <div class="infor" >
+            <form action="" method="post">
+                <el-input v-model="userid" placeholder="用户名" required></el-input>
+                <br/><br/>
+                性别：
+                <el-radio v-model="gender" label="man" border>男</el-radio>
+                <el-radio v-model="gender" label="woman" border>女</el-radio>
+                <el-radio v-model="gender" label="unknown" border>不愿吐露</el-radio>
+                <br/><br/>
+                <el-input style="width:100%;" v-model="search_data" placeholder="手机号">
+                    <template slot="append">
+                        <el-button type="primary" plain @click="">获取验证码</el-button>
+                    </template>
+                </el-input>
+                <br/><br/>
+                <el-input v-model="userid" placeholder="学号"></el-input>
+                <br/><br/>
+                <el-input v-model="userid" placeholder="邮箱"></el-input>
+                <br/><br/>
+                <el-input v-model="password" placeholder="密码" required></el-input>
+                <br/><br/>
+                <el-checkbox v-model="isChecked" label="我已阅读并同意此">我已阅读并同意此</el-checkbox><a href=./simpledoc.pdf>用户条款</a>
+                <br/><br/>
+                <el-button :disabled="!isChecked" round style="width: 100%;">登录</el-button>
+            </form>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                userid: '',
+                password:'',
+                gender:'',
+                isChecked: false
+                };
+            },
+            methods: {
+                handleClick(tab, event) {
+                console.log(tab, event);
+                }
+            }
+        });
+        console.log("2003/7/12 by liangyongqi")
+      </script>
+</body>
+</html>
